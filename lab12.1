@@ -1,0 +1,75 @@
+'''
+Program: main.py
+Programmer: Caden Hong
+Purpose: Display five scores entered by user and calculate average and letter grade
+Date: May 25, 2021
+'''
+
+# Import the os and datetime modules
+import os
+import datetime
+
+# Assign USERNAME and USERPROFILE environment variables to users and userProfile respectively
+# Assign now() to the today variable
+# Assign formatted date and time using strftime() to the time variable
+# Display userProfile and time
+'''
+Replit doesn't recognize USERNAME and USERPROFILE environment variables
+user = os.username["USERNAME"]
+userProfile = os.environ["USERPROFILE"]
+'''
+today = datetime.datetime.now()
+time = today.strftime("%H:%M:%S %A, %B %d, %Y")
+#print(f"{userProfile}")
+print(f"Lab 12.1: {time}\n")
+
+# Declare and define main function that prompts user to enter five test scores
+# Call calc_average function with scores as parameters and assign returned value to average
+# Display a table with scores and corresponding letter grades found using determine_grade function
+def main():
+    score1 = eval(input("Enter score 1: "))
+    score2 = eval(input("Enter score 2: "))
+    score3 = eval(input("Enter score 3: "))
+    score4 = eval(input("Enter score 4: "))
+    score5 = eval(input("Enter score 5: "))
+    average = calc_average(score1, score2, score3, score4, score5)
+
+    print("Score\t\tNumeric Grade\t  Letter Grade")
+    print("--------------------------------------------------------")
+    print(f"score 1:\t   {format(score1, '.1f')}\t\t\t{determine_grade(score1)}")
+    print(f"score 2:\t   {format(score2, '.1f')}\t\t\t{determine_grade(score2)}")
+    print(f"score 3:\t   {format(score3, '.1f')}\t\t\t{determine_grade(score3)}")
+    print(f"score 4:\t   {format(score4, '.1f')}\t\t\t{determine_grade(score4)}")
+    print(f"score 5:\t   {format(score5, '.1f')}\t\t\t{determine_grade(score5)}")
+    print("--------------------------------------------------------")
+    print(f"Average score:\t   {format(average, '.1f')}\t\t\t{determine_grade(average)}")
+'''
+    Replit doesn't recognize USERNAME and USERPROFILE environment variables
+    print(f"{user}, this is my Lab 12.1\n")
+'''
+# Declare and define calc_average function that calculates the average score of passed parameters
+# and assigns the result to the average variable
+# Return the average variable
+def calc_average(s1, s2, s3, s4, s5):
+    average = (s1 + s2 + s3 + s4 + s5) / 5
+    return average
+
+# Declare and define determine_grade function with one passed parameter
+# Use conditional statements of if, elif, and else to determine corresponding letter grade
+# Assign the letter grade into letterGrade
+# Return the letterGrade variable
+def determine_grade(score):
+    if score >= 90 and score <= 100:
+        letterGrade = "A"
+    elif score >= 80 and score <= 89:
+        letterGrade = "B"
+    elif score >= 70 and score <= 79:
+        letterGrade = "C"
+    elif score >= 60 and score <= 69:
+        letterGrade = "D"
+    else:
+        letterGrade = "F"
+    return letterGrade
+
+# Call main function to run program
+main()
